@@ -1,0 +1,15 @@
+<?php
+
+use stojg\crop\CropCenter;
+
+/**
+ * crop a image.
+ */
+ function crop_image($image_path, $width, $height, $target_path = '') {
+    $center = new CropCenter($image_path);
+    $croppedImage = $center->resizeAndCrop($width, $height);
+    if(empty($target_path)){
+      $target_path = $image_path;
+    }
+    $croppedImage->writeimage($target_path);
+ }
